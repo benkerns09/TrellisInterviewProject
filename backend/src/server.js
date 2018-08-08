@@ -44,14 +44,19 @@ app.use(function(req, res, next) {
   //next middleware function in the application's request-response cycle
 });
 //route handler. Handles GET requests to the root of the app. Intended for matching and handling a specific route when requested with the GET HTTP verb
-app.get('/sensors', (req, res) => {
+app.get('/potato', (req, res) => {
   // Return all sensors. Sends JSON response composed of a stringified version of the specified data
+  //req is an object containing information about the HTTP request that raised the event. In response to req, you use res to send back the desired HTTP response
   res.json(db.sensors);
 });
 
-// app.get('/sensor/:id' (req, res) => {
-//   res.json(db.sensors[req.params.id])
-// })
+// that's actually defining that route right there
+// you could change it to `app.get('/potato, (req, res) => {` and then when your frontend sends a GET request to `/potato` it will return the same thing
+
+
+app.get('/sensor/:id', (req, res) => {
+  res.json(db.sensors[req.params.id])
+})
 
 const PORT = 9000;
 app.listen(PORT);

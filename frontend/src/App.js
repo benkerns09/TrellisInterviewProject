@@ -8,6 +8,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Sensor Viewer!</h1>
+          {/* Sensor viewer is header, sensorlist component is in the app class  */}
         </header>
         <SensorList />
       </div>
