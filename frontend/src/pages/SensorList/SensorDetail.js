@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { getSensor } from '../../services/SensorService';//function that fetch's sensors. Unused currently
+
 class SensorDetail extends Component {
     componentDidMount() {
         // fetch data for this.props.sensorId and set to state
@@ -8,8 +10,10 @@ class SensorDetail extends Component {
     render() {
         return(
             <div>
-                <h1>Sendsor Detail</h1>
+                <h1>Sensor Detail</h1>
+                {/* //this is what you see as dropdown option */}
                 <p>{this.props.sensorId}</p>
+                {/* This grabs the ID for each sensor on the dropdown */}
             </div>
         ) 
 
@@ -19,4 +23,4 @@ class SensorDetail extends Component {
 
 
 
-export default SensorDetail;
+export default SensorDetail;//exported to sensorList, sensorList imports
