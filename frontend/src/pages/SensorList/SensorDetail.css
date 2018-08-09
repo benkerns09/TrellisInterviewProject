@@ -1,0 +1,41 @@
+.notesList {
+    font-size: 15px;
+    background-color: lightyellow;
+    border: 2px solid black;
+}
+
+.note {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    color: green;
+    font-weight: 700;
+    border: 2px solid black;
+}
+
+.note:hover {
+    background-color: black;
+    border: 2px solid green;
+    cursor: pointer;
+}
+
+.notesList .theList {
+    list-style: none;
+    padding-left: 15px;
+    width: 80%;
+}
+
+.notesList .theList li {
+    color: black;
+    font-weight: 800px;
+    background-color: rgba(255,255,255,.5);
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid lightgreen;
+    transition: background-color .4s ease-out;
+}
+
+.notesList .theList li:hover {
+    background-color: red;
+    cursor: pointer;
+}
