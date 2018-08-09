@@ -22,9 +22,9 @@ class SensorList extends React.Component {
 //if component mounts, loading goes to false. If loading, you get 'loading'...
 //if component mounts, error is not called. If error, gives you the error message
 
-  showDetail(id) {
+  showDetail(notes) {
     this.setState({
-      showDetail: id
+      showDetail: notes,
     })
   }
 //this funciton rendders on click. So when someone clicks show detai, we get the id. I need to add more detail to this
@@ -62,14 +62,14 @@ class SensorList extends React.Component {
     return (//normally, this is that it should return
       <div className="SensorList">
         {
-          sensors.map(({ id, name, description }) => (//gonna return all these value in the sensors array. array
+          sensors.map(({ id, name, description, notes }) => (//gonna return all these value in the sensors array. array
             <div key={id} className="SensorListItem">
             {/* key should be provided for list items. A “key” is a special string attribute you need to include when creating lists of elements. We’ll discuss why it’s important in the next section. */}
               <div className="SensorListName">{name}</div>
               <div className="SensorListDescription">{description}</div>
-              <button onClick={() => {this.showDetail(id)}}>Show Detail</button>
+              <button onClick={() => {this.showDetail(notes)}}>Show Detail</button>
               {/* On click, the state is changed to showDetail, which right now is just bringin back the id */}
-              {this.state.showDetail === id && (<SensorDetail sensorId={id} />)}
+              {this.state.showDetail === notes && (<SensorDetail sensorNotes={notes} />)}
 {/* //details. when clicked, takes you to new route or shows new componnet */}
             </div>
           ))

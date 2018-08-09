@@ -6,22 +6,26 @@ const db = {
     {
       id: 1,
       name: 'North Sensor',
-      description: 'The sensor in the north, check',
+      description: 'The sensor in the north',
+      notes: 'Note number one'
     },
     {
       id: 2,
       name: 'South Sensor',
-      description: 'The south field sensor'
+      description: 'The south field sensor',
+      notes: 'Note number two'
     },
     {
       id: 3,
       name: 'East Sensor',
-      description: 'The sensor on the east side'
+      description: 'The sensor on the east side',
+      notes: 'Note number 3'
     },
     {
       id: 4,
       name: 'West Sensor',
-      description: 'The western most sensor'
+      description: 'The western most sensor',
+      notes: 'Note number four'
     }
   ]
 };
@@ -54,8 +58,12 @@ app.get('/potato', (req, res) => {
 // you could change it to `app.get('/potato, (req, res) => {` and then when your frontend sends a GET request to `/potato` it will return the same thing
 
 
-app.get('/sensor/:id', (req, res) => {
-  res.json(db.sensors[req.params.id])
+// app.get('/sensor/:id', (req, res) => {
+//   res.json(db.sensors[req.params.id])
+// })
+
+app.get('/sensor/:notes', (req, res) => {
+  res.json(db.sensors[req.params.notes])
 })
 
 const PORT = 9000;
