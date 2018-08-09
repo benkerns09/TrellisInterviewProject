@@ -38,7 +38,6 @@ class SensorDetail extends Component {
     //     // fetch data for this.props.sensorId and set to state
     // }
 
-
     deleteItem(key) {
         var filteredItems = this.state.items.filter(function(item) {
             return (item.key !== key);
@@ -54,23 +53,12 @@ class SensorDetail extends Component {
         return(
             <div className="notesList">
                 <h1>Notes</h1>
-                {/* //this is what you see as dropdown option */}
-                {/* <p>{this.props.sensorId}</p> */}
-                {/* This grabs the ID for each sensor on the dropdown */}
                 <form onSubmit={this.addItem}>
                     <input classname="input" ref={(a) => this._inputElement = a}
                         placeholder="Enter Note">
                     </input>
                     <button type="submit" className="note">Add Note</button>
                 </form>
-                {/* <p>{this.props.sensorNotes}</p> */}
-                {/* <form action='/sensor/:notes' method="post">
-                    <label>
-                        New Note:
-                        <input type="text" name="name" />
-                    </label>
-                    <button type="submit">Submit</button>
-                </form> */}
                 <NoteItems entries={this.state.items}
                     delete={this.deleteItem} />
             </div>

@@ -1,4 +1,4 @@
-const serverURL = 'http://localhost:9000';//connects to backend port
+const serverURL = 'http://localhost:9000';
 
 export const getSensors = () => {//fuction to retrieve sensors from backend
   return fetch(`${serverURL}/sensors`)//fetching this from servers backend

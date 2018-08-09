@@ -1,14 +1,13 @@
-import React from 'react';//default import
+import React from 'react';
 import './SensorList.css';
-import SensorDetail from './SensorDetail.js';//has the onClick functionalities
+import SensorDetail from './SensorDetail.js';
 
 
-import { getSensors } from '../../services/SensorService';//function that fetch's sensors
-//component SensorList
+import { getSensors } from '../../services/SensorService';
 class SensorList extends React.Component {
   constructor(props) {
     super(props);
-    //specify state object inside sensorlist component's constructor. Runs way before component gets rendered
+
     this.state = {
       sensors: [],
       loading: true,
@@ -17,8 +16,6 @@ class SensorList extends React.Component {
     };
   }
 //properties: sensors, loading, error
-//telling react to set these props to ([], true, '')
-//the empty array just means there is no default
 //if component mounts, loading goes to false. If loading, you get 'loading'...
 //if component mounts, error is not called. If error, gives you the error message
 
@@ -27,7 +24,6 @@ class SensorList extends React.Component {
       showDetail: notes,
     })
   }
-//this funciton rendders on click. So when someone clicks show detai, we get the id. I need to add more detail to this
   
   componentDidMount() {
     getSensors()//if the component mounts, this function is called
@@ -41,10 +37,8 @@ class SensorList extends React.Component {
 
 //want do do this here instead of constructor to avoid weird scenario when data comes back before the DOM has happened
 
-//next step is to render 
-
   render() {
-    const { loading, sensors, error } = this.state;//all of these could be the state. These live inside of the component
+    const { loading, sensors, error } = this.state;
     if(error) {//if its an error statement
       return (//this is that it will return
         <div className="SensorListError">
@@ -62,15 +56,13 @@ class SensorList extends React.Component {
     return (//normally, this is that it should return
       <div className="SensorList">
         {
-          sensors.map(({ id, name, description, notes }) => (//gonna return all these value in the sensors array. array
+          sensors.map(({ id, name, description, notes }) => (
             <div key={id} className="SensorListItem">
-            {/* key should be provided for list items. A “key” is a special string attribute you need to include when creating lists of elements. We’ll discuss why it’s important in the next section. */}
               <div className="SensorListName">{name}</div>
               <div className="SensorListDescription">{description}</div>
-              <button onClick={() => {this.showDetail(notes)}}>Show Detail</button>
-              {/* On click, the state is changed to showDetail, which right now is just bringin back the id */}
+              <button className="detail" onClick={() => {this.showDetail(notes)}}>Show Detail</button>
+              {/* {/* On click, the state is changed to showDetail */}
               {this.state.showDetail === notes && (<SensorDetail sensorNotes={notes} />)}
-{/* //details. when clicked, takes you to new route or shows new componnet */}
             </div>
           ))
         }
@@ -79,4 +71,4 @@ class SensorList extends React.Component {
   }
 }
 
-export default SensorList;//able to be used by other programs with import statement
+export default SensorList;

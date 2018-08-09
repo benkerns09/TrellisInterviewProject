@@ -11,8 +11,8 @@ body {
   margin: auto;
   margin-top: 24px;
   max-width: 400px;
-  text-align: left;
-  padding: 10px;
+  text-align: center;
+  padding: 20px;
   border-radius: 0px 8px 8px 0px;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   border-left: 6px solid #87c38f;
@@ -20,6 +20,7 @@ body {
 
 .SensorListName {
   font-size: 2rem;
+  padding: 10px;
 }
 
 .SensorListError {
@@ -28,4 +29,17 @@ body {
 
 .SensorListLoading {
   margin: 24px;
+}
+
+.detail {
+  padding: 5px;
+  background-color: lightgreen;
+  border: 5px solid green;
+  font-size: 20px;
+  width: 90%;
+  height: 40%;
+}
+
+.SensorListDescription {
+  padding: 20px;
 }
