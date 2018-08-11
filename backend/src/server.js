@@ -1,4 +1,6 @@
 const express = require('express');
+const bodyparser = require('body-parser');
+
 
 // In-memory 'database' object.
 const db = {
@@ -27,6 +29,8 @@ const db = {
 };
 
 const app = express();
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
 
 app.use(function(req, res, next) {
   // Allow CORS
@@ -54,6 +58,36 @@ app.get('/sensors/:notes', (req, res) => {
 //   res.send(db.sensors[req.params.notes])
 //   // req.json(db.sensors[req.params.notes])
 // })
+
+app.post('/sensor/:id/addnote', (req, res) => {
+  // if the req.body does not have a note on it
+  if (!req.body.note) {
+    //return an error as JSON
+    res.json({
+      'error': 'gimme a note',
+    });
+  } else {
+    //add note to sensor with id passed in URL
+    db.sensors.forEach((sensor, index) => {
+      if (sensor.id == req.params.id) {
+        if (!db.sensors[index].notes) {
+          db.sensors[index].notes = []
+        }
+        db.sensors[index].notes.push(req.body.note)
+
+        //if adding the note was successfull then return a success message
+        res.json({
+          'success': 'added note to sensor '+ req.params.id,
+          'notes': db.sensors[index].notes,
+        })
+      }
+    });
+
+    //and log to the console
+    console.log(db.sensors);
+    //logic here to add note data to sensor with id that matches req.params.id
+  }
+});
 
 const PORT = 9000;
 app.listen(PORT);

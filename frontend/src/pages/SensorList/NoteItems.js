@@ -12,9 +12,9 @@ class NoteItems extends Component {
         this.props.delete(key);
     }
 
-    createTasks(item) {
-        return <li onClick={() => this.delete(item.key)}
-            key={item.key}>{item.text}</li>
+    createTasks(item, key) {
+        return <li onClick={() => this.delete(key)}
+            key={key}>{item}</li>
     }
 
     render() {

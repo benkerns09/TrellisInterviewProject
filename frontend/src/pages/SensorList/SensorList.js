@@ -56,13 +56,13 @@ class SensorList extends React.Component {
     return (//normally, this is that it should return
       <div className="SensorList">
         {
-          sensors.map(({ id, name, description, notes }) => (
-            <div key={id} className="SensorListItem">
-              <div className="SensorListName">{name}</div>
-              <div className="SensorListDescription">{description}</div>
-              <button className="detail" onClick={() => {this.showDetail(notes)}}>Show Detail</button>
+          sensors.map(( sensor ) => (
+            <div key={sensor.id} className="SensorListItem">
+              <div className="SensorListName">{sensor.name}</div>
+              <div className="SensorListDescription">{sensor.description}</div>
+              <button className="detail" onClick={() => {this.showDetail(sensor.notes)}}>Show Detail</button>
               {/* {/* On click, the state is changed to showDetail */}
-              {this.state.showDetail === notes && (<SensorDetail sensorNotes={notes} />)}
+              {this.state.showDetail === sensor.notes && (<SensorDetail sensor={sensor} />)}
             </div>
           ))
         }

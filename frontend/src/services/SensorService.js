@@ -10,11 +10,11 @@ export const getSensors = () => {//fuction to retrieve sensors from backend
     });
 }
 
-export const getSensor = (notes) => {//fuction to retrieve sensors from backend
-  return fetch(`${serverURL}/sensor/${notes}`)//fetching this from servers backend
+export const getSensor = (id) => {//fuction to retrieve sensors from backend
+  return fetch(`${serverURL}/sensor/${id}`)//fetching this from servers backend
     .then(res => {
       if(res.status !== 200) {
-        throw new Error('Error fetching sensor with id: '+notes);
+        throw new Error('Error fetching sensor with id: '+id);
       }
       return res.json();//returns javascript object notation
     });

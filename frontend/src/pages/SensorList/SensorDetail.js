@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NoteItems from './NoteItems';
+import axios from 'axios';
 import "./SensorDetail.css";
 import { getSensor } from '../../services/SensorService';//function that fetch's sensors. Unused currently
 
@@ -15,20 +16,16 @@ class SensorDetail extends Component {
     }
 
     addItem(e) {
-        var itemArray = this.state.items;
-
-        if (this._inputElement.value !== "") {
-            itemArray.unshift({
-                text: this._inputElement.value,
-                key: Date.now()
-            });
-
+        const formData = new FormData();
+        axios.post(`http://localhost:9000/sensor/${this.props.sensor.id}/addnote`, {
+            note: e.target.note.value
+        })
+        .then((response) => {
             this.setState({
-                items: itemArray
-            });
-
-            this._inputElement.value = "";
-        }
+                items: response.data.notes
+            })
+        });
+        var itemArray = this.state.items;
 
         console.log(itemArray);
 
@@ -54,9 +51,7 @@ class SensorDetail extends Component {
             <div className="notesList">
                 <h1>Notes</h1>
                 <form onSubmit={this.addItem}>
-                    <input classname="input" ref={(a) => this._inputElement = a}
-                        placeholder="Enter Note">
-                    </input>
+                    <input className="input" name="note" placeholder="Enter Note"></input>
                     <button type="submit" className="note">Add Note</button>
                 </form>
                 <NoteItems entries={this.state.items}
